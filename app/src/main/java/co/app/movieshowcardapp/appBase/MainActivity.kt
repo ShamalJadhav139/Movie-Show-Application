@@ -122,14 +122,7 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    private fun popSingleFragmentFromBackStack() {
-        if (supportFragmentManager.backStackEntryCount != 0) {
-            try {
-                supportFragmentManager.popBackStack()
-            } catch (e: Exception) {
-            }
-        }
-    }
+
 
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount == 0) {

@@ -8,6 +8,6 @@ class AppDetails {
     companion object {
         var context: Context? = null
         var activity: Activity? = null
-        var device_id: String? = null
+
     }
 }

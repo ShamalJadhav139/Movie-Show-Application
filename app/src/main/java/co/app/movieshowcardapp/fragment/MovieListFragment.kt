@@ -1,24 +1,22 @@
 package co.app.movieshowcardapp.fragment
 
 
-import android.content.Intent
-import android.net.Uri
+
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 
-import co.app.movieshowcardapp.R
+
 import co.app.movieshowcardapp.adapter.MovieListAdapter
-import co.app.movieshowcardapp.appBase.BaseFragment
 import co.app.movieshowcardapp.constants.ApiConstants
 import co.app.movieshowcardapp.databinding.FragmentMovieListBinding
 import co.app.movieshowcardapp.model.MovieListResponse
@@ -28,7 +26,7 @@ import co.app.movieshowcardapp.networkContracter.MainContractor
 import com.google.gson.Gson
 
 
-class MovieListFragment : BaseFragment(), MainContractor.View {
+class MovieListFragment : Fragment(), MainContractor.View {
     private var fragmentMovieListBinding: FragmentMovieListBinding? = null
     private var presenter: MainContractor.Presenter? = null
     var movieListAdapter = MovieListAdapter()
@@ -49,10 +47,10 @@ class MovieListFragment : BaseFragment(), MainContractor.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         movieListAdapter = MovieListAdapter()
-        fragmentMovieListBinding!!.bookListRecycleView.setHasFixedSize(true)
+        fragmentMovieListBinding!!.movieListRecycleView.setHasFixedSize(true)
         gridlayoutManager = GridLayoutManager(activity, 3)
-        fragmentMovieListBinding!!.bookListRecycleView.layoutManager = gridlayoutManager
-        fragmentMovieListBinding!!.bookListRecycleView.adapter = movieListAdapter
+        fragmentMovieListBinding!!.movieListRecycleView.layoutManager = gridlayoutManager
+        fragmentMovieListBinding!!.movieListRecycleView.adapter = movieListAdapter
 
         callGetMovieApi("batman")
         fragmentMovieListBinding!!.searchText.addTextChangedListener(object : TextWatcher {

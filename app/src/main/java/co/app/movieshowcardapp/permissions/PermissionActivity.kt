@@ -108,16 +108,12 @@ class PermissionActivity : AppCompatActivity() {
     companion object {
         var counter = 0
         val PERMISSIONS_GRANTED = 0
-        val PERMISSIONS_DENIED = 1
+
 
         private val PERMISSION_REQUEST_CODE = 0
         private val EXTRA_PERMISSIONS = "com.etpl.frogmendiver.EXTRA_PERMISSIONS"
         private val PACKAGE_URL_SCHEME = "package:"
 
-        fun startActivityForResult(activity: Activity, requestCode: Int, vararg permissions: String) {
-            val intent = Intent(activity, PermissionActivity::class.java)
-            intent.putExtra(EXTRA_PERMISSIONS, permissions)
-            ActivityCompat.startActivityForResult(activity, intent, requestCode, null)
-        }
+
     }
 }

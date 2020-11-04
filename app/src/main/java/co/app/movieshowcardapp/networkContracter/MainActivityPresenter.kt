@@ -31,7 +31,6 @@ import retrofit2.Response
 
 class MainActivityPresenter(val mView: MainContractor.View) : MainContractor.Presenter {
     private var progressDialog: ProgressDialog? = null
-    //private var progressDialog: Dialog? = null
     private var apiCallingCount=0
     override fun onClick(
         caseConstants: ApiConstants,
@@ -59,7 +58,7 @@ class MainActivityPresenter(val mView: MainContractor.View) : MainContractor.Pre
         context: Context,
         view: ApiConstants
     ) {
-        // if (isNetworkAvailable(context)) {
+
         accessTokenCall.enqueue(object : Callback<JsonObject> {
             override fun onResponse(
                 call: Call<JsonObject>,
@@ -173,20 +172,5 @@ class MainActivityPresenter(val mView: MainContractor.View) : MainContractor.Pre
 
 
 
-    private fun initAndShowProgressBar(context: Context) {
-        try {
-            if (progressDialog != null) {
-                progressDialog!!.dismiss()
-            }
-            progressDialog = null
-            progressDialog = ProgressDialog(context)
-            progressDialog!!.setMessage("Please wait...")
-            progressDialog!!.isIndeterminate = true
-            progressDialog!!.setCancelable(false)
-            progressDialog!!.show()
-        } catch (e: Exception) {
-            Log.e(ContentValues.TAG, "initAndShowProgressBar: $e")
-        }
 
-    }
 }

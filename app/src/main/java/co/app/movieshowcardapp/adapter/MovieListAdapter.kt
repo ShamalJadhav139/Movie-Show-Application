@@ -58,23 +58,7 @@ class MovieListAdapter(): RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
     class ViewHolder(val itemMovieListBinding: ItemMovieListBinding) :
         RecyclerView.ViewHolder(itemMovieListBinding.root)
 
-    fun filterData(s: CharSequence) {
-        var tmpList: List<MovieListResponse.SearchMovie>? = mutableListOf()
-        if (s.length > 0) {
-            for (model in movieList) {
-                if (tmpList != null) {
-                    if (model.Title!!.toLowerCase().contains(s.toString().toLowerCase())) {
-                        tmpList += model
-                    }
-                }
-            }
-            this.filterList = tmpList!! as ArrayList<MovieListResponse.SearchMovie>
 
-        } else {
-            this.filterList = movieList
-        }
-        notifyDataSetChanged()
-    }
 
 
 
