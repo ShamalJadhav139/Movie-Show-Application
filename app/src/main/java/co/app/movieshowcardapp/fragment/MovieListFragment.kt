@@ -1,7 +1,6 @@
 package co.app.movieshowcardapp.fragment
 
 
-
 import android.os.Bundle
 
 import android.text.Editable
@@ -35,7 +34,6 @@ class MovieListFragment : Fragment(), MainContractor.View {
     var count: Int = 0
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -57,10 +55,10 @@ class MovieListFragment : Fragment(), MainContractor.View {
 
         fragmentMovieListBinding!!.nextText.setOnClickListener {
             count += 1
-            callGetMovieApi("batman",count.toString())
-            if(count>1){
+            callGetMovieApi(fragmentMovieListBinding!!.searchText.text.toString(), count.toString())
+            if (count > 1) {
                 fragmentMovieListBinding!!.previousText.visibility = View.VISIBLE
-            }else{
+            } else {
                 fragmentMovieListBinding!!.previousText.visibility = View.GONE
             }
 
@@ -68,18 +66,19 @@ class MovieListFragment : Fragment(), MainContractor.View {
 
         fragmentMovieListBinding!!.previousText.setOnClickListener {
             count -= 1
-            callGetMovieApi("batman",count.toString())
-            if(count>1){
+            callGetMovieApi(fragmentMovieListBinding!!.searchText.text.toString(), count.toString())
+            if (count > 1) {
                 fragmentMovieListBinding!!.previousText.visibility = View.VISIBLE
-            }else{
+            } else {
                 fragmentMovieListBinding!!.previousText.visibility = View.GONE
             }
 
         }
 
 
-
-        callGetMovieApi("batman","1")
+        if (fragmentMovieListBinding!!.searchText.text.toString().trim().isEmpty()) {
+            callGetMovieApi("batman", "1")
+        }
         fragmentMovieListBinding!!.searchText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
 
@@ -90,8 +89,8 @@ class MovieListFragment : Fragment(), MainContractor.View {
             }
 
             override fun afterTextChanged(s: Editable) {
-                if (fragmentMovieListBinding!!.searchText.text.toString().length > 3) {
-                    callGetMovieApi(fragmentMovieListBinding!!.searchText.text.toString(),"")
+                if (fragmentMovieListBinding!!.searchText.text.toString().length > 2) {
+                    callGetMovieApi(fragmentMovieListBinding!!.searchText.text.toString(), "")
                 }
 
 
@@ -102,7 +101,7 @@ class MovieListFragment : Fragment(), MainContractor.View {
     }
 
 
-    fun callGetMovieApi(s:String,page:String) {
+    fun callGetMovieApi(s: String, page: String) {
         val paramArray = arrayOf<String>(
             s,
             "4b64a943",
