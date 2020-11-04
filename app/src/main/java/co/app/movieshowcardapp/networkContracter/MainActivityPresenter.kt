@@ -47,7 +47,7 @@ class MainActivityPresenter(val mView: MainContractor.View) : MainContractor.Pre
 
         when (caseConstants) {
             ApiConstants.getMovies -> {
-                accessTokenCall = requestInterface.getMovies(parameters[0],parameters[1])
+                accessTokenCall = requestInterface.getMovies(parameters[0],parameters[1],parameters[2])
                 callApi(accessTokenCall, context, ApiConstants.getMovies)
             }
         }

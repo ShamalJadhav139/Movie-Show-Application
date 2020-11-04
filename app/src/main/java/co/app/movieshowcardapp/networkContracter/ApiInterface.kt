@@ -10,6 +10,7 @@ interface ApiInterface {
     @GET("/")
     fun getMovies(
         @Query("s")s:String,
-        @Query("apikey")apikey:String
+        @Query("apikey")apikey:String,
+        @Query("page")page:String
     ): Call<JsonObject>
 }
